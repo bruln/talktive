@@ -14,8 +14,7 @@ var connectedClients = {};
 
 io.on('connection', (client) => {
   //Console.log
-  const count = io.engine.clientsCount;
-  console.log(`User connected \nThere are now ${count} users logged in`);
+  console.log(`User connected (${io.engine.clientsCount} total)`);
 
   //Message
   client.on('message', (message) => {

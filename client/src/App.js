@@ -6,11 +6,11 @@ import { socket } from './services/socket';
 function App() {
   const [name, setName] = useState('');
   return (
-    <div>
+    <>
       <h1>Let's talk</h1>
 
       <Chatroom />
-    </div>
+    </>
   );
 }
 
