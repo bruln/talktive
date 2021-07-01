@@ -14,7 +14,7 @@ var connectedClients = {};
 
 io.on('connection', (client) => {
   //Console.log
-  console.log(`User connected (${io.engine.clientsCount} total)`);
+  console.log(`User ${client.id} connected (${io.engine.clientsCount} total)`);
 
   //Message
   client.on('message', (message) => {

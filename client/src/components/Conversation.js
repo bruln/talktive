@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
-import './stylesheets/conversation.css';
-import { socket } from './services/socket';
+import '../stylesheets/conversation.css';
+import { socket } from '../services/socket';
 
 const Conversation = () => {
   const [messageList, setMessageList] = useState(['say something']);
@@ -13,8 +13,8 @@ const Conversation = () => {
   return (
     <section>
       <div id='chatbox'>
-        {messageList.map((message) => {
-          return <h4>{message}</h4>;
+        {messageList.map((message, index) => {
+          return <h4 key={index}>{message}</h4>;
         })}
       </div>
     </section>
