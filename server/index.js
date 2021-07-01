@@ -1,5 +1,6 @@
 require('dotenv').config();
 const port = process.env.PORT || 5000;
+const uuid = require('uuid');
 const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
@@ -12,9 +13,15 @@ const io = require('socket.io')(server, {
 var connectedClients = {};
 
 io.on('connection', (client) => {
-  console.log('user conected');
+  //Console.log
   const count = io.engine.clientsCount;
-  console.log(`there are now ${count} users logged in`);
+  console.log(`User connected \nThere are now ${count} users logged in`);
+
+  //Message
+  client.on('message', (message) => {
+    console.log(message);
+    client.broadcast.emit('message', message);
+  });
 });
 
 server.listen(port, () => {

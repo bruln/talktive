@@ -1,14 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
-
+import { socket } from './services/socket';
 const MessageBox = () => {
   const [message, setMessage] = useState('');
 
   function sendMessage(e) {
     e.preventDefault();
     if (message) {
-      console.log(message);
-      setMessage('');
+      socket.emit('message', message);
       e.target.reset();
     } else {
       // prompt user
